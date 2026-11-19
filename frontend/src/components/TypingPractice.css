@@ -1,0 +1,381 @@
+
+/* =========================================
+   TYPEUP — INLINE TYPING PRACTICE ENGINE
+========================================= */
+
+.typing-practice {
+  position: relative;
+  width: 100%;
+  padding: 27px;
+  color: #f5eeee;
+  cursor: text;
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(101, 0, 11, 0.19),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Hidden keyboard input */
+
+.typing-hidden-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  border: 0;
+  pointer-events: none;
+}
+
+/* Header */
+
+.typing-practice-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.typing-practice-icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #e97843;
+  background: rgba(233, 120, 67, 0.11);
+  border: 1px solid rgba(233, 120, 67, 0.15);
+  border-radius: 12px;
+}
+
+.typing-practice-eyebrow {
+  display: block;
+  color: #e97843;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.typing-practice-heading h3 {
+  margin: 7px 0;
+  color: #f5eeee;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.typing-practice-heading p {
+  margin: 0;
+  color: #a99b9b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Live statistics */
+
+.typing-practice-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 27px 0;
+}
+
+.typing-practice-stats > div {
+  min-width: 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+}
+
+.typing-practice-stats span {
+  display: block;
+  color: #a99b9b;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.typing-practice-stats strong {
+  display: block;
+  margin-top: 8px;
+  color: #e97843;
+  font-family: var(--font-mono);
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.typing-practice-stats strong small {
+  color: #a99b9b;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+}
+
+/* Typing area */
+
+.typing-practice-target {
+  position: relative;
+  height: 190px;
+  max-height: 190px;
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  padding: 24px;
+  margin: 25px 0 18px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  font-family: var(--font-mono);
+  font-size: clamp(19px, 2.2vw, 25px);
+  line-height: 1.9;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  user-select: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.typing-practice-target::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual words */
+
+.typing-word {
+  position: relative;
+  display: inline-flex;
+  white-space: pre;
+  color: #716767;
+}
+
+.typing-word.active-word {
+  color: #b8aaaa;
+}
+
+.typing-character {
+  position: relative;
+  color: #716767;
+  transition: color 100ms ease;
+}
+
+.typing-character.correct {
+  color: #e8e0e0;
+}
+
+.typing-character.incorrect {
+  color: #ff746c;
+  background: rgba(255, 75, 75, 0.13);
+  border-radius: 2px;
+}
+
+/* Current character caret */
+
+.typing-character.current::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 5%;
+  width: 2px;
+  height: 90%;
+  background: #e97843;
+  border-radius: 2px;
+  animation: typeup-caret-blink 1s infinite;
+}
+
+.typing-end-caret {
+  width: 2px;
+  height: 1.2em;
+  flex-shrink: 0;
+  margin-left: 3px;
+  background: #e97843;
+  animation: typeup-caret-blink 1s infinite;
+}
+
+@keyframes typeup-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Focus feedback */
+
+.typing-practice:focus-within .typing-practice-target {
+  border-color: rgba(233, 120, 67, 0.3);
+  box-shadow: 0 0 0 3px rgba(233, 120, 67, 0.045);
+}
+
+/* Feedback */
+
+.typing-practice-feedback {
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  color: #a99b9b;
+  font-size: 11px;
+}
+
+.typing-practice-feedback > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.typing-success {
+  color: #9bd7a4;
+}
+
+.typing-warning {
+  color: #ffad85;
+}
+
+/* Footer */
+
+.typing-practice-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.typing-practice-footer > span {
+  color: #807373;
+  font-size: 10px;
+}
+
+.typing-restart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  color: #e97843;
+  background: rgba(233, 120, 67, 0.09);
+  border: 1px solid rgba(233, 120, 67, 0.2);
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.typing-restart-button:hover {
+  background: rgba(233, 120, 67, 0.17);
+  border-color: rgba(233, 120, 67, 0.4);
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+  .typing-practice {
+    padding: 19px 15px;
+  }
+
+  .typing-practice-heading h3 {
+    font-size: 16px;
+  }
+
+  .typing-practice-stats {
+    gap: 7px;
+    margin: 21px 0;
+  }
+
+  .typing-practice-stats > div {
+    padding: 11px 8px;
+  }
+
+  .typing-practice-stats span {
+    font-size: 8px;
+  }
+
+  .typing-practice-stats strong {
+    font-size: 18px;
+  }
+
+  .typing-practice-target {
+    height: 165px;
+    max-height: 165px;
+    gap: 9px 10px;
+    padding: 17px 14px;
+    font-size: 18px;
+    line-height: 1.9;
+  }
+
+  .typing-practice-footer {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 350px) {
+  .typing-practice-stats {
+    gap: 5px;
+  }
+
+  .typing-practice-stats > div {
+    padding: 9px 6px;
+  }
+
+  .typing-practice-stats strong {
+    font-size: 16px;
+  }
+
+  .typing-practice-target {
+    font-size: 16px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .typing-practice *,
+  .typing-practice *::before,
+  .typing-practice *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+.suggestion-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.suggestion-title {
+  color: #f5eeee;
+  font-weight: 600;
+}
+
+.suggestion-item p {
+  margin: 0;
+  color: #a99b9b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.suggestion-priority {
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(233, 120, 67, 0.12);
+  color: #e97843;
+  font-size: 10px;
+  text-transform: uppercase;
+}

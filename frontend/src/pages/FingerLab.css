@@ -1,0 +1,344 @@
+
+.finger-lab-page {
+  min-height: 100vh;
+  padding: 45px 24px 80px;
+  color: #f5eeee;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(101, 0, 11, 0.2), transparent 55%),
+    #080808;
+}
+
+.finger-lab-container {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.finger-lab-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.finger-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 38px;
+  color: #bcaeae;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.finger-back:hover {
+  color: #e97843;
+}
+
+.finger-eyebrow,
+.finger-label {
+  color: #e97843;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.finger-lab-header h1 {
+  margin: 12px 0;
+  font-size: clamp(36px, 6vw, 54px);
+  font-weight: 800;
+}
+
+.finger-lab-header h1 span {
+  color: #e97843;
+}
+
+.finger-lab-header > p {
+  color: #a99b9b;
+  font-size: 14px;
+}
+
+.finger-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+  margin-bottom: 25px;
+}
+
+.finger-stat,
+.finger-exercise-panel,
+.finger-keyboard-panel,
+.finger-tips {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 17px;
+  background: rgba(49, 20, 20, 0.36);
+  backdrop-filter: blur(15px);
+}
+
+.finger-stat {
+  padding: 19px;
+}
+
+.finger-stat svg {
+  display: block;
+  width: 19px;
+  color: #e97843;
+  margin-bottom: 12px;
+}
+
+.finger-stat span {
+  display: block;
+  color: #a99b9b;
+  font-size: 12px;
+}
+
+.finger-stat strong {
+  display: block;
+  margin-top: 7px;
+  font-size: 24px;
+}
+
+.finger-exercise-panel,
+.finger-keyboard-panel {
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.finger-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.finger-section-heading h2 {
+  margin: 8px 0 0;
+  font-size: 21px;
+}
+
+.finger-reset {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid rgba(233, 120, 67, 0.3);
+  border-radius: 9px;
+  color: #e97843;
+  background: rgba(233, 120, 67, 0.08);
+  cursor: pointer;
+}
+
+.finger-exercise-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.finger-exercise-tabs button {
+  padding: 10px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #bcaeae;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.finger-exercise-tabs button.active {
+  color: #ffad82;
+  border-color: rgba(233, 120, 67, 0.5);
+  background: rgba(233, 120, 67, 0.13);
+}
+
+.finger-exercise-description {
+  margin: 25px 0 15px;
+}
+
+.finger-exercise-description h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.finger-exercise-description p,
+.finger-hint {
+  color: #a99b9b;
+  font-size: 12px;
+}
+
+.finger-practice-box {
+  padding: 28px 20px;
+  border: 1px solid rgba(233, 120, 67, 0.15);
+  border-radius: 13px;
+  background: rgba(8, 8, 8, 0.4);
+  text-align: center;
+}
+
+.finger-target {
+  margin: 15px 0;
+  color: #e97843;
+  font-family: var(--font-mono);
+  font-size: 64px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.finger-instruction {
+  color: #bcaeae;
+  font-size: 13px;
+}
+
+.finger-feedback {
+  margin: 18px 0;
+  color: #c8b4b4;
+  font-size: 13px;
+}
+
+.finger-feedback.success {
+  color: #55c895;
+}
+
+.finger-progress-track {
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.finger-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #65000b, #e97843);
+  transition: width 0.2s ease;
+}
+
+.finger-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.finger-key-row {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+
+.finger-key {
+  width: 100%;
+  max-width: 65px;
+  height: 57px;
+  border: 1px solid color-mix(in srgb, var(--finger-color), transparent 60%);
+  border-radius: 9px;
+  color: #f5eeee;
+  background: color-mix(in srgb, var(--finger-color), transparent 87%);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.finger-key:hover {
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--finger-color), transparent 65%);
+}
+
+.finger-key.target-key {
+  outline: 2px solid var(--finger-color);
+  background: color-mix(in srgb, var(--finger-color), transparent 60%);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--finger-color), transparent 65%);
+}
+
+.finger-key.last-key {
+  border-color: #55c895;
+}
+
+.finger-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.finger-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #bcaeae;
+  font-size: 11px;
+}
+
+.finger-legend-item span {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+}
+
+.finger-tips {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 22px;
+}
+
+.finger-tips > svg {
+  flex-shrink: 0;
+  color: #e97843;
+}
+
+.finger-tips h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.finger-tips p {
+  margin: 0;
+  color: #a99b9b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 650px) {
+  .finger-lab-page {
+    padding: 25px 12px 55px;
+  }
+
+  .finger-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .finger-exercise-panel,
+  .finger-keyboard-panel {
+    padding: 16px;
+  }
+
+  .finger-key-row {
+    gap: 3px;
+  }
+
+  .finger-key {
+    height: 39px;
+    min-width: 0;
+    padding: 0;
+    font-size: 11px;
+  }
+
+  .finger-legend {
+    justify-content: flex-start;
+    gap: 11px;
+  }
+
+  .finger-target {
+    font-size: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finger-key,
+  .finger-progress-fill {
+    transition: none;
+  }
+}
